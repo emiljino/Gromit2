@@ -1,0 +1,6 @@
+- Issues within the WebRTC Code becoming deprecated
+- 2FA email functionality has not been fully tested
+- Regex system may have an underlying error on the Gromit PCs
+- PCs themselves have the 'stable' version of the code on them
+
+If launching for the first time, recommend using the 'stable' branch version of the repo

@@ -1,0 +1,27 @@
+.smartData {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 0px;
+
+  min-width: 8%;
+
+  color: hsl(0, 0%, 98%);
+}
+
+#temperature {
+    color: #fff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    vertical-align: 40px;
+    display: inline-block;
+    font-size: calc(5px + 1.25vw);
+    float: left;
+}
+
+#weather {
+    display: inline-block;
+    float: left;
+    min-width: calc(20px + 1.5vw);
+
+}

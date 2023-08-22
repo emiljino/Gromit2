@@ -1,0 +1,62 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.siouan.frontend-jdk11' version '4.0.1'
+	id 'java'
+}
+
+group = 'com.oceangromits'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.security:spring-security-messaging'
+	implementation 'com.h2database:h2'
+	implementation 'org.projectlombok:lombok:1.18.16'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'javax.mail:mail:1.4.7'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2',
+			'io.jsonwebtoken:jjwt-jackson:0.11.2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+bootRun {
+	if (project.hasProperty('args')) {
+		args project.args.split(',')
+	}
+}
+//frontend {
+//	nodeDistributionProvided = false
+//	nodeVersion = '14.15.0'
+//	nodeInstallDirectory = file("${projectDir}/node")
+//
+//	installScript = 'install'
+//	assembleScript = 'run build'
+//	cleanScript = 'run clean'
+//
+//	packageJsonDirectory = file("${projectDir}/frontend")
+//	verboseModeEnabled = false
+//}
+
+// Bundle our frontend with the .jar file
+task copyWebApp(type: Copy) {
+	from 'frontend/build'
+	into 'build/resources/main/static/.'
+}
+
+bootJar.dependsOn(copyWebApp)
