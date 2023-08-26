@@ -50,7 +50,7 @@ authentication and video.
 
 Clone the repository
 ```
-git clone https://github.com/spe-uob/2021-Gromit2
+git clone https://github.com/emiljino/Gromit2
 ```
 
 Pull dependencies and build
